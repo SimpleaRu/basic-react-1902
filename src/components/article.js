@@ -2,9 +2,14 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
 class Article extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isCommentsOpen: false
+        }
+    }
     render() {
         const { isOpen, article, onButtonClick } = this.props
-        console.log('---', 1)
         return (
             <div>
                 <h2>
@@ -15,13 +20,20 @@ class Article extends PureComponent {
             </div>
         )
     }
+
 }
 
 function getBody(article) {
     return (
-        <section>
-            {article.text}
-        </section>
+        <div>
+            <section>
+                {article.text}
+            </section>
+            <button > Commets</button>
+            <div>
+       
+            </div>
+        </div>
     )
 }
 
@@ -32,7 +44,8 @@ Article.propTypes = {
         title: PropTypes.string.isRequired,
         text: PropTypes.string
     }).isRequired,
-    onButtonClick: PropTypes.func
+    onButtonClick: PropTypes.func,
+   
 }
 
 export default Article
