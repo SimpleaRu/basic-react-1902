@@ -6,9 +6,9 @@ class Comments extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+/*         this.state = {
             isCommentsButton: false
-        }
+        } */
     }
 
     static propTypes = {
@@ -18,8 +18,8 @@ class Comments extends Component {
     //   toggleItem = openItemId => this.setState({ !openItemId })
 
     render() {
-        const { article } = this.props
-
+        const { article, isCommentsButton, commentTogle } = this.props
+        console.log(isCommentsButton)
         const commentsArr = article.comments.map((coment) =>
             <p key={coment.id}>
                 {coment.text}
@@ -27,13 +27,11 @@ class Comments extends Component {
         )
         return (
             <div>
-                <button onClick={() => this.setState({
-                    isCommentsButton: !this.state.isCommentsButton
-                })}>
+                <button onClick={commentTogle}>
                     Comments
                 </button>
                 <section>
-                    {this.state.isCommentsButton && commentsArr}
+                    {this.isCommentsButton && commentsArr}
                 </section>
             </div>
         )
