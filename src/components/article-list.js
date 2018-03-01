@@ -10,7 +10,7 @@ class ArticleList extends Component {
         //from accordion decorator
         openItemId: PropTypes.string,
         toggleItem: PropTypes.func
-    };
+    }
 
     render() {
         const { articles, openItemId, toggleItem } = this.props

@@ -1,11 +1,12 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import Comments from './Comments'
 
 class Article extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            isCommentsOpen: false
+            isCommentsButton: false
         }
     }
     render() {
@@ -16,27 +17,34 @@ class Article extends PureComponent {
                     {article.title}
                     <button onClick={() => onButtonClick(article.id)}>{isOpen ? 'close' : 'open'}</button>
                 </h2>
-                {isOpen && getBody(article)}
+                <section>
+                    {isOpen && getBody(article, this.onCommentsButton, this.state.isCommentsButton )}
+
+                </section>
             </div>
         )
     }
-
+    onCommentsButton = () => {
+        this.setState({ isCommentsButton: !this.state.isCommentsButton })
+    }
 }
 
-function getBody(article) {
+function getBody(article, onCommentsButton, isCommentsButton) {
+const commentsCont = <Comments article = {article}/>
     return (
         <div>
             <section>
                 {article.text}
             </section>
-            <button > Commets</button>
-            <div>
-       
-            </div>
+            <button onClick={onCommentsButton}>comments
+            </button>
+            <section>
+            {isCommentsButton && commentsCont}
+               {/*  <Comments article = {article}/> */}
+            </section>
         </div>
     )
 }
-
 
 Article.propTypes = {
     isOpen: PropTypes.bool,
@@ -45,7 +53,7 @@ Article.propTypes = {
         text: PropTypes.string
     }).isRequired,
     onButtonClick: PropTypes.func,
-   
+
 }
 
 export default Article
