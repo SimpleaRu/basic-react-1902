@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import Comments from './Comments'
 
 class Article extends PureComponent {
-    constructor(props) {
+/*     constructor(props) {
         super(props);
         this.state = {
             isCommentsButton: false
         }
-    }
+    } */
     render() {
         const { isOpen, article, onButtonClick } = this.props
         return (
@@ -18,29 +18,27 @@ class Article extends PureComponent {
                     <button onClick={() => onButtonClick(article.id)}>{isOpen ? 'close' : 'open'}</button>
                 </h2>
                 <section>
-                    {isOpen && getBody(article, this.onCommentsButton, this.state.isCommentsButton )}
+                    {isOpen && getBody(article )}
 
                 </section>
             </div>
         )
     }
-    onCommentsButton = () => {
+/*     onCommentsButton = () => {
         this.setState({ isCommentsButton: !this.state.isCommentsButton })
-    }
+    } */
 }
 
-function getBody(article, onCommentsButton, isCommentsButton) {
-const commentsCont = <Comments article = {article}/>
+function getBody(article) {
+    const commentsCont = <Comments article={article} />
     return (
         <div>
             <section>
                 {article.text}
             </section>
-            <button onClick={onCommentsButton}>comments
-            </button>
+
             <section>
-            {isCommentsButton && commentsCont}
-               {/*  <Comments article = {article}/> */}
+                {commentsCont}
             </section>
         </div>
     )
