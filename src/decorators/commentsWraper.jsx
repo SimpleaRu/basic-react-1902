@@ -6,11 +6,10 @@ export default (OriginalComponent) => class DecoratedComponent extends React.Com
 
     }
 
- commentTogle = () => {
-     this.setState= ({
+ commentTogle = () => this.setState ({
         isCommentsButton: !this.state.isCommentsButton
      })
- }
+ 
 
     render() {
         return (<OriginalComponent {...this.props} {...this.state} commentTogle= {this.commentTogle} />)

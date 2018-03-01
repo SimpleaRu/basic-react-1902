@@ -19,7 +19,7 @@ class Comments extends Component {
 
     render() {
         const { article, isCommentsButton, commentTogle } = this.props
-
+        
         const commentsArr = article.comments.map((coment) =>
             <p key={coment.id}>
                 {coment.text}
@@ -28,7 +28,7 @@ class Comments extends Component {
         return (
             <div>
                 <button onClick={commentTogle}>
-                {console.log(isCommentsButton)}
+              
                     Comments
                 </button>
                 <section>
