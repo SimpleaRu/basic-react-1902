@@ -4,22 +4,19 @@ import commentsWraper from '../decorators/commentsWraper'
 
 class Comments extends Component {
 
-    constructor(props) {
-        super(props);
-/*         this.state = {
-            isCommentsButton: false
-        } */
-    }
 
     static propTypes = {
-        article: PropTypes.object
+        article: PropTypes.object,
+    //from commentsWraper
+        isCommentsButton: PropTypes.bool,
+        commentTogle: PropTypes.func
+
     }
 
     //   toggleItem = openItemId => this.setState({ !openItemId })
 
     render() {
         const { article, isCommentsButton, commentTogle } = this.props
-        
         const commentsArr = article.comments.map((coment) =>
             <p key={coment.id}>
                 {coment.text}
